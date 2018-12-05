@@ -78,7 +78,24 @@ async def mute(ctx, member: discord.Member):
         if channel.name == 'soyal-log':
             embed=discord.Embed(title="User Muted!", description="**{0}** was muted by **{1}**!".format(member, ctx.message.author), color=0x37F60A)
             await client.send_message(channel, embed=embed)
+
 	
+@client.command(pass_context = True)
+@commands.has_permissions(kick_members=True) 
+async def unmute(ctx, member: discord.Member):
+    if ctx.message.author.bot:
+      return
+    if member is None:
+      await client.say('Please specify member i.e. Mention a member to unmute')
+    else:
+      role = discord.utils.get(member.server.roles, name='Muted')
+      await client.remove_roles(member, role)
+      await client.say("Unmuted **{}**".format(member))
+      for channel in member.server.channels:
+        if channel.name == 'soyal-log':
+            embed=discord.Embed(title="User unmuted!", description="**{0}** was unmuted by **{1}**!".format(member, ctx.message.author), color=0xFD1600)
+            await client.send_message(channel, embed=embed)
+		
 @client.command(pass_context = True)
 @commands.has_permissions(administrator = True)
 async def dm(ctx, user: discord.Member, *, msg: str):
