@@ -127,7 +127,7 @@ async def info(ctx):
 
 async def botinvite(ctx):
 
-    await client.say('https://discordapp.com/api/oauth2/authorize?client_id=518672070377209857&permissions=8&scope=bot')
+    await client.say('https://discordapp.com/api/oauth2/authorize?client_id=518672070377209857&permissions=8&scope=bot NOTE: THIS IS NOT PREMIUM BOT YOU NEED PREMIUM SO ASK OWNER AND PREMIUM IS FREE ')
 
 @client.command(pass_context = True)
 async def test(ctx):
