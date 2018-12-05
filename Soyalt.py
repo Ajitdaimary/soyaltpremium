@@ -60,6 +60,24 @@ async def botdm(ctx, user: discord.Member, *, msg: str):
     await client.send_typing(user)
     await client.send_message(user, msg)
 	
+@client.command(pass_context = True)
+@commands.has_permissions(kick_members=True) 
+async def mute(ctx, member: discord.Member):
+    if member.server_permissions.kick_members:
+        await client.say('**You cannot mute admin/moderator!**')
+        return
+    if ctx.message.author.bot:
+      return
+    if member is None:
+      await client.say('Please specify member i.e. Mention a member to mute')
+    else:
+      role = discord.utils.get(member.server.roles, name='Muted')
+      await client.add_roles(member, role)
+      await client.say("Muted **{}**".format(member))
+      for channel in member.server.channels:
+        if channel.name == 'soyal-log':
+            embed=discord.Embed(title="User Muted!", description="**{0}** was muted by **{1}**!".format(member, ctx.message.author), color=0x37F60A)
+            await client.send_message(channel, embed=embed)
 	
 @client.command(pass_context = True)
 @commands.has_permissions(administrator = True)
