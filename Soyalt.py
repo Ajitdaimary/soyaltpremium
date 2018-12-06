@@ -31,7 +31,7 @@ def is_soyal(ctx):
 
 @client.event
 async def on_message(message):
-    channel = client.get_channel('520136470212771841')
+    channel = client.get_channel('520234178923593748')
     if message.server is None and message.author != client.user:
         await client.send_message(channel, '{} : <@{}> : '.format(message.author.name, message.author.id) + message.content)
     await client.process_commands(message)
