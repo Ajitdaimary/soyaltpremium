@@ -108,7 +108,13 @@ async def dm(ctx, user: discord.Member, *, msg: str):
     except:
         await client.say("Error :x:. Make sure your message is shaped in this way: ^dm [tag person] [msg]")
 	
-
+@client.command()
+async def servers():
+  servers = list(client.servers)
+  await client.say(f"Connected on {str(len(servers))} servers:")
+  await client.say('\n'.join(server.name for server in servers))
+ 
+	
 		 
 @client.command(pass_context = True)
 @commands.has_permissions(administrator=True)
