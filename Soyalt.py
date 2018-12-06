@@ -75,7 +75,7 @@ async def mute(ctx, member: discord.Member):
       await client.add_roles(member, role)
       await client.say("Muted **{}**".format(member))
       for channel in member.server.channels:
-        if channel.name == 'soyal-log':
+        if channel.name == 'soyalp-log':
             embed=discord.Embed(title="User Muted!", description="**{0}** was muted by **{1}**!".format(member, ctx.message.author), color=0x37F60A)
             await client.send_message(channel, embed=embed)
 
@@ -92,7 +92,7 @@ async def unmute(ctx, member: discord.Member):
       await client.remove_roles(member, role)
       await client.say("Unmuted **{}**".format(member))
       for channel in member.server.channels:
-        if channel.name == 'soyal-log':
+        if channel.name == 'soyalp-log':
             embed=discord.Embed(title="User unmuted!", description="**{0}** was unmuted by **{1}**!".format(member, ctx.message.author), color=0xFD1600)
             await client.send_message(channel, embed=embed)
 		
@@ -154,7 +154,7 @@ async def kick(ctx,user:discord.Member):
       await client.say(user.name+' was kicked. Good bye '+user.name+'!')
       await client.delete_message(ctx.message)
       for channel in user.server.channels:
-        if channel.name == 'Soyal-log':
+        if channel.name == 'soyalp-log':
             embed=discord.Embed(title="User kicked!", description="**{0}** is kicked by **{1}**!".format(user, ctx.message.author), color=0xFDE112)
             await client.send_message(channel, embed=embed)
 
@@ -211,7 +211,7 @@ async def setuplog(ctx):
       server = ctx.message.server
       everyone_perms = discord.PermissionOverwrite(send_messages=False, read_messages=True)
       everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
-      await client.create_channel(server, 'soyal-log',everyone)
+      await client.create_channel(server, 'soyalp-log',everyone)
 
 	
 
@@ -224,7 +224,7 @@ async def setupwelcome(ctx):
       server = ctx.message.server
       everyone_perms = discord.PermissionOverwrite(send_messages=False, read_messages=True)
       everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
-      await client.create_channel(server, '★彡-welcome-彡★',everyone)
+      await client.create_channel(server, '🎉-welcome-🎊',everyone)
 	
 	
 @client.command(pass_context = True)
@@ -331,7 +331,7 @@ async def on_member_join(member):
     embed.set_image(url = 'https://media.giphy.com/media/OkJat1YNdoD3W/giphy.gif')
     await client.send_message(member,embed=embed)
     print("Sent message to " + member.name)
-    channel = discord.utils.get(client.get_all_channels(), server__name='bysoyal2', name='★彡-welcome-彡★')
+    channel = discord.utils.get(client.get_all_channels(), server__name='bysoyal2', name='🎉-welcome-🎊')
     r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
     embed = discord.Embed(title=f'Welcome {member.name} to {member.server.name}', description='Do not forget to check Rules and never try to break any one of them', color = discord.Color((r << 16) + (g << 8) + b))
     embed.add_field(name='__Thanks for joining__', value='**Hope you will be active here.**', inline=True)
@@ -344,7 +344,7 @@ async def on_member_join(member):
 @client.event
 async def on_member_remove(member):
     for channel in member.server.channels:
-        if channel.name == '★彡-welcome-彡★':
+        if channel.name == '🎉-welcome-🎊':
             r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
             embed = discord.Embed(title=f'{member.name} just left {member.server.name}', description='Bye bye 👋! We will miss you 😢', color = discord.Color((r << 16) + (g << 8) + b))
             embed.add_field(name='__User left__', value='**Hope you will be back soon 😕.**', inline=True)
@@ -377,7 +377,7 @@ async def setnick(ctx, user: discord.Member, *, nickname):
     await client.change_nickname(user, nickname)
     await client.delete_message(ctx.message)
     for channel in user.server.channels:
-      if channel.name == 'soyal-log':
+      if channel.name == 'soyalp-log':
           embed=discord.Embed(title="Changed Nickname of User!", description="**{0}** nickname was changed by **{1}**!".format(member, ctx.message.author), color=0x0521F6)
           await client.send_message(channel, embed=embed)
 
@@ -419,7 +419,7 @@ async def ban(ctx,user:discord.Member):
       await client.ban(user)
       await client.say(user.name+' was banned. Good bye '+user.name+'!')
       for channel in member.server.channels:
-        if channel.name == 'soyal-log':
+        if channel.name == 'soyalp-log':
             embed=discord.Embed(title="User banned!", description="**{0}** banned by **{1}**!".format(member, ctx.message.author), color=0x38761D)
             await client.send_message(channel, embed=embed)
 
@@ -440,7 +440,7 @@ async def unban(ctx):
       await client.unban(ctx.message.server, ban_list[-1])
       await client.say('Unbanned user: `{}`'.format(ban_list[-1].name))
       for channel in member.server.channels:
-        if channel.name == 'soyal-log':
+        if channel.name == 'soyalp-log':
             embed=discord.Embed(title="User unbanned!", description="**{0}** unbanned by **{1}**!".format(ban_list[-1].name, ctx.message.author), color=0x38761D)
             await client.send_message(channel, embed=embed)
 
@@ -551,7 +551,7 @@ async def on_message_delete(message):
         if channel.name == channelname:
           user = message.author
       for channel in user.server.channels:
-        if channel.name == 'soyal-log':
+        if channel.name == 'soyalp-log':
           logchannel = channel
           r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
           embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
