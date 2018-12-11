@@ -592,4 +592,18 @@ async def announce(ctx, channel: discord.Channel=None, *, msg: str):
     await client.delete_message(ctx.message)
 	
 	
+
+@client.command(pass_context = True)
+@commands.has_permissions(administrator=True)
+async def setupmodmail(ctx):
+    if ctx.message.author.bot:
+      return
+    else:
+      server = ctx.message.server
+      everyone_perms = discord.PermissionOverwrite(send_messages=False, read_messages=True)
+      everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
+      await client.create_channel(server, '📬mod-mails📬',everyone)	
+	
+	
+	
 client.run(os.getenv('Token'))
