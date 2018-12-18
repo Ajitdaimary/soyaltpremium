@@ -608,7 +608,7 @@ async def setupmodmail(ctx):
 	
 @client.command(pass_context = True)
 async def nf(ctx):
-    choices = ['http://imgur.com/gallery/ytEyIWF']
+    choices = ['https://goo.gl/images/9EvGJo']
     r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
     embed = discord.Embed(title='Meme', description=':joy: :joy: :joy: :joy: ', color = discord.Color((r << 16) + (g << 8) + b))
     embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/486489391083159574/520207004334292992/Loading.gif') 
